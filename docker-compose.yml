@@ -1,9 +1,19 @@
 version: '3'
+
 services:
   db:
     build: db
   webapp:
     build: webapp
+    volumes:
+      - tkdw_webapp_socket:/app/socket
   nginx:
     build: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - tkdw_webapp_socket:/app/socket
+
 volumes:
+  tkdw_webapp_socket:
+    external: true
