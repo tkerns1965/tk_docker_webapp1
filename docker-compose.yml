@@ -1,0 +1,9 @@
+version: '3'
+services:
+  db:
+    build: db
+  webapp:
+    build: webapp
+  nginx:
+    build: nginx
+volumes:
