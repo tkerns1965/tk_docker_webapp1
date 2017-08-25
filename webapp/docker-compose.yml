@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  webapp1:
+    build: .
+    volumes:
+      - docker_app_socket:/app/socket
+
+volumes:
+  docker_app_socket:
+    external: true

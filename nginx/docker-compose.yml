@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  nginx1:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - docker_app_socket:/app/socket
+
+volumes:
+  docker_app_socket:
+    external: true
