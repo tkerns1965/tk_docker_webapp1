@@ -1,1 +1,23 @@
 FROM python:3.6.2-jessie
+
+RUN apt update && \
+    apt install -y build-essential python-dev && \
+    pip install uwsgi
+
+ENV INSTALL_PATH /app/webapp
+# ENV SOCKET_PATH /app/socket
+
+RUN mkdir -p $INSTALL_PATH
+WORKDIR $INSTALL_PATH
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY flask-hello.py .
+COPY webapp.ini .
+
+# RUN mkdir $SOCKET_PATH && \
+#     chown www-data:www-data $SOCKET_PATH
+# VOLUME $SOCKET_PATH
+
+CMD ["uwsgi", "--ini", "webapp.ini"]
