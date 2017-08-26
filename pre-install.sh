@@ -3,7 +3,7 @@
 docker volume create tkdw_webapp_socket
 
 # connect a temporary container to the new volume and change ownership
-docker run --mount src=tkdw_webapp_socket,dst=/app/socket debian:jessie-slim --name tmp-chown-skt \
+docker run --mount src=tkdw_webapp_socket,dst=/app/socket --name tmp-chown-skt debian:jessie-slim \
   sh -c "chown -R www-data:www-data app"
 
 # remove the temporary container
