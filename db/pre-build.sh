@@ -1,9 +1,10 @@
-docker volume create tkdw_db_socket
+docker volume create tkdw1_db_data
+docker volume create tkdw1_db_socket
 
 docker run -di \
   --name bb_temp \
-  --mount src=tkdw_db_data,dst=/var/lib/mysql \
-  --mount src=tkdw_db_socket,dst=/db/socket \
+  --mount src=tkdw1_db_data,dst=/var/lib/mysql \
+  --mount src=tkdw1_db_socket,dst=/db/socket \
   busybox:1.27.2
 
 docker exec bb_temp \
