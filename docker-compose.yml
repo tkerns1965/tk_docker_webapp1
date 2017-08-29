@@ -3,9 +3,12 @@ version: '3'
 services:
   db:
     build: db
+    volumes:
+      - tkdw_db_socket:/db/socket
   webapp:
     build: webapp
     volumes:
+      - tkdw_db_socket:/db/socket
       - tkdw_webapp_socket:/app/socket
   nginx:
     build: nginx
@@ -15,5 +18,7 @@ services:
       - tkdw_webapp_socket:/app/socket
 
 volumes:
+  tkdw_db_socket:
+    external: true
   tkdw_webapp_socket:
     external: true
