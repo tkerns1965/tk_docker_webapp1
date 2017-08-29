@@ -3,21 +3,27 @@ version: '3'
 services:
   db:
     build: db
+    image: tkdw1_db
     volumes:
+      - tkdw_db_data:/var/lib/mysql
       - tkdw_db_socket:/db/socket
   webapp:
     build: webapp
+    image: tkdw1_webapp
     volumes:
       - tkdw_db_socket:/db/socket
       - tkdw_webapp_socket:/app/socket
   nginx:
     build: nginx
+    image: tkdw1_nginx
     ports:
       - "80:80"
     volumes:
       - tkdw_webapp_socket:/app/socket
 
 volumes:
+  tkdw_db_data:
+    external: true
   tkdw_db_socket:
     external: true
   tkdw_webapp_socket:
