@@ -1,1 +1,1 @@
-docker build -t tkdw_db .
+docker build -t tkdw1_db .
