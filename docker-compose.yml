@@ -4,18 +4,21 @@ services:
   db:
     build: db
     image: tkdw1_db
+    container_name: tkdw1_db1
     volumes:
       - tkdw_db_data:/var/lib/mysql
       - tkdw_db_socket:/db/socket
   webapp:
     build: webapp
     image: tkdw1_webapp
+    container_name: tkdw1_webapp1
     volumes:
       - tkdw_db_socket:/db/socket
       - tkdw_webapp_socket:/app/socket
   nginx:
     build: nginx
     image: tkdw1_nginx
+    container_name: tkdw1_nginx1
     ports:
       - "80:80"
     volumes:
