@@ -1,1 +1,1 @@
-docker build -t nginx1 .
+docker build -t img-tkdw1-nginx .
