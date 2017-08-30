@@ -1,2 +1,2 @@
-docker stop nginx1
-docker rm nginx1
+docker stop cnt_tkdw1_nginx
+docker rm cnt_tkdw1_nginx
