@@ -1,1 +1,1 @@
-docker build -t tkdw1_db .
+docker build -t img_tkdw1_db .
