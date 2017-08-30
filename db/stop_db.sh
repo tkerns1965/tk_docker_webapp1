@@ -1,2 +1,2 @@
-docker stop tkdw1_db1
-docker rm tkdw1_db1
+docker stop cnt_tkdw1_db
+docker rm cnt_tkdw1_db
