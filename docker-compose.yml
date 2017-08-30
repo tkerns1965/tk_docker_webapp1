@@ -3,31 +3,36 @@ version: '3'
 services:
   db:
     build: db
-    image: tkdw1_db
-    container_name: tkdw1_db1
+    image: img_tkdw1_db
+    container_name: cnt_tkdw1_db
     volumes:
-      - tkdw_db_data:/var/lib/mysql
-      - tkdw_db_socket:/db/socket
+      - vol_tkdw1_db_data:/var/lib/mysql
+      - vol_tkdw1_db_socket:/db/socket
   webapp:
     build: webapp
-    image: tkdw1_webapp
-    container_name: tkdw1_webapp1
+    image: img_tkdw1_webapp
+    container_name: cnt_tkdw1_webapp
     volumes:
-      - tkdw_db_socket:/db/socket
-      - tkdw_webapp_socket:/app/socket
+      - vol_tkdw1_db_socket:/db/socket
+      - vol_tkdw1_webapp_socket:/app/socket
+    depends_on:
+      - db
   nginx:
     build: nginx
-    image: tkdw1_nginx
-    container_name: tkdw1_nginx1
+    image: img_tkdw1_nginx
+    container_name: cnt_tkdw1_nginx
     ports:
       - "80:80"
     volumes:
-      - tkdw_webapp_socket:/app/socket
+      - vol_tkdw1_webapp_socket:/app/socket
+    depends_on:
+      - db
+      - webapp
 
 volumes:
-  tkdw_db_data:
+  vol_tkdw1_db_data:
     external: true
-  tkdw_db_socket:
+  vol_tkdw1_db_socket:
     external: true
-  tkdw_webapp_socket:
+  vol_tkdw1_webapp_socket:
     external: true
