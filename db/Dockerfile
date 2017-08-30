@@ -8,4 +8,4 @@ ENV MYSQL_PASSWORD 2hard4u
 RUN rm /etc/mysql/my.cnf && \
     rm /etc/mysql/debian.cnf
 COPY my.cnf debian.cnf /etc/mysql/
-COPY tkdw1-db.sql /docker-entrypoint-initdb.d/
+COPY sql/. /docker-entrypoint-initdb.d/
