@@ -13,7 +13,7 @@ WORKDIR $INSTALL_PATH
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY flask-hello.py webapp.ini .
+COPY flask-hello.py webapp.ini ./
 
 # RUN mkdir $SOCKET_PATH && \
 #     chown www-data:www-data $SOCKET_PATH
