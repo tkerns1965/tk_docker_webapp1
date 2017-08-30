@@ -1,13 +1,15 @@
 version: "3"
 
 services:
-  nginx1:
+  nginx:
     build: .
+    image: img_tkdw1_nginx
+    container_name: cnt_tkdw1_nginx
     ports:
       - "80:80"
     volumes:
-      - docker_app_socket:/app/socket
+      - vol_tkdw1_webapp_socket:/app/socket
 
 volumes:
-  docker_app_socket:
+  vol_tkdw1_webapp_socket:
     external: true
