@@ -12,12 +12,12 @@ DROP TABLE IF EXISTS company,
                      class, 
                      hours;
 
-CREATE TABLE company (
+CREATE TABLE tblCompany (
     company_no  TINYINT  NOT NULL,
     PRIMARY KEY (company_no)
 );
 
-CREATE TABLE job (
+CREATE TABLE tblJob (
     company_no  TINYINT      NOT NULL,
     job_id      INT          NOT NULL  AUTO_INCREMENT,
     job_code    VARCHAR(10)  NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE job (
     UNIQUE KEY (company_no,job_code)
 );
 
-CREATE TABLE timesheet (
+CREATE TABLE tblTimesheet (
     job_id          INT          NOT NULL,
     timesheet_id    INT          NOT NULL  AUTO_INCREMENT=-2147483648,
     timesheet_date  DATE         NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE timesheet (
     UNIQUE KEY (job_id,timesheet_date,craft_code)
 );
 
-CREATE TABLE phase (
+CREATE TABLE tblPhase (
     timesheet_id  INT           NOT NULL,
     phase_id      INT           NOT NULL  AUTO_INCREMENT=-2147483648,
     phase_code    VARCHAR(20)   NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE phase (
     UNIQUE KEY (timesheet_id,phase_code,phase_note)
 );
 
-CREATE TABLE employee (
+CREATE TABLE tblEmployee (
     timesheet_id   INT           NOT NULL,
     employee_id    INT           NOT NULL  AUTO_INCREMENT=-2147483648,
     employee_code  VARCHAR(11)   NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE employee (
     UNIQUE KEY (timesheet_id,employee_code,employee_note)
 );
 
-CREATE TABLE class (
+CREATE TABLE tblClass (
     employee_id     INT           NOT NULL,
     class_id        INT           NOT NULL  AUTO_INCREMENT,
     class_code      VARCHAR(10)   NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE class (
     UNIQUE KEY (employee_id,class_code,class_note,equipment_code,equipment_note)
 );
 
-CREATE TABLE hours (
+CREATE TABLE tblHours (
     phase_id         INT           NOT NULL,
     class_id         INT           NOT NULL,
     labor_hours      DECIMAL(4,2)  NOT NULL,
