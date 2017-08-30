@@ -1,1 +1,1 @@
-docker exec -it tkdw1_db1 bash
+docker exec -it cnt_tkdw1_db bash
