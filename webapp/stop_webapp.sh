@@ -1,2 +1,2 @@
-docker stop webapp1
-docker rm webapp1
+docker stop cnt_tkdw1_webapp
+docker rm cnt_tkdw1_webapp
