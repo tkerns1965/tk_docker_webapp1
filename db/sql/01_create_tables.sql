@@ -4,13 +4,13 @@ USE tkdw1;
 
 SELECT 'CREATING DATABASE STRUCTURE' as 'INFO';
 
-DROP TABLE IF EXISTS company,
-                     job,
-                     timesheet,
-                     phase, 
-                     employee, 
-                     class, 
-                     hours;
+DROP TABLE IF EXISTS tblCompany,
+                     tblJob,
+                     tblTimesheet,
+                     tblPhase, 
+                     tblEmployee, 
+                     tblClass, 
+                     tblHours;
 
 CREATE TABLE tblCompany (
     company_no  TINYINT  NOT NULL,
