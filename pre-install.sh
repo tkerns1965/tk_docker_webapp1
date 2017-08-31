@@ -16,8 +16,8 @@ docker run -di \
 # change ownership of the folder(s) on the volume(s)
 docker exec bb_temp \
   sh -c " \
-    chown -R 999:999 db && \
-    chown -R www-data:www-data app\
+    chown 999:999 /db/socket && \
+    chown www-data:www-data /app/socket \
     "
 
 # stop the busybox container
