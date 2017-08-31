@@ -3,14 +3,14 @@
 #   by the 'docker run' statement below
 docker volume create vol_tkdw1_db_data
 docker volume create vol_tkdw1_db_socket
-docker volume create vol_tkdw1_webapp_socket
+docker volume create vol_tkdw1_app_socket
 
 # connect a busybox container to the volume(s)
 docker run -di \
   --name bb_temp \
   --mount src=vol_tkdw1_db_data,dst=/db/data \
   --mount src=vol_tkdw1_db_socket,dst=/db/socket \
-  --mount src=vol_tkdw1_webapp_socket,dst=/app/socket \
+  --mount src=vol_tkdw1_app_socket,dst=/app/socket \
   busybox:1.27.2
 
 # change ownership of the folder(s) on the volume(s)
