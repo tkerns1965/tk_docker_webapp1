@@ -34,7 +34,7 @@ CREATE TABLE tblTimesheet (
     temperature     VARCHAR(20),
     PRIMARY KEY (timesheet_id),
     UNIQUE KEY (job_id,timesheet_date,craft_code)
-) AUTO_INCREMENT=-2147483648;
+) AUTO_INCREMENT = -2147483648;
 
 CREATE TABLE tblPhase (
     timesheet_id  INT           NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE tblPhase (
     phase_note    VARCHAR(100),
     PRIMARY KEY (phase_id),
     UNIQUE KEY (timesheet_id,phase_code,phase_note)
-) AUTO_INCREMENT=-2147483648;
+) AUTO_INCREMENT = -2147483648;
 
 CREATE TABLE tblEmployee (
     timesheet_id   INT           NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE tblEmployee (
     employee_note  VARCHAR(100),
     PRIMARY KEY (employee_id),
     UNIQUE KEY (timesheet_id,employee_code,employee_note)
-) AUTO_INCREMENT=-2147483648;
+) AUTO_INCREMENT = -2147483648;
 
 CREATE TABLE tblClass (
     employee_id     INT           NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE tblClass (
     equipment_note  VARCHAR(100),
     PRIMARY KEY (class_id),
     UNIQUE KEY (employee_id,class_code,class_note,equipment_code,equipment_note)
-) AUTO_INCREMENT=-2147483648;
+) AUTO_INCREMENT = -2147483648;
 
 CREATE TABLE tblHours (
     phase_id         INT           NOT NULL,
