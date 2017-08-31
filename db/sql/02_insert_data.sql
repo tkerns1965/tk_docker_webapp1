@@ -1,2 +1,3 @@
-INSERT INTO `company` VALUES 
-(10);
+INSERT INTO `company`
+VALUES 
+  (10);
