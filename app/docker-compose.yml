@@ -1,13 +1,13 @@
 version: "3"
 
 services:
-  webapp:
+  app:
     build: .
-    image: img_tkdw1_webapp
-    container_name: cnt_tkdw1_webapp
+    image: img_tkdw1_app
+    container_name: cnt_tkdw1_app
     volumes:
-      - vol_tkdw1_webapp_socket:/app/socket
+      - vol_tkdw1_app_socket:/app/socket
 
 volumes:
-  vol_tkdw1_webapp_socket:
+  vol_tkdw1_app_socket:
     external: true
