@@ -8,8 +8,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - vol_tkdw1_webapp_socket:/app/socket
+      - vol_tkdw1_app_socket:/app/socket
 
 volumes:
-  vol_tkdw1_webapp_socket:
+  vol_tkdw1_app_socket:
     external: true
