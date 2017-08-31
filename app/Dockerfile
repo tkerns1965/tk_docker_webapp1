@@ -13,10 +13,10 @@ WORKDIR $INSTALL_PATH
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY flask-hello.py webapp.ini ./
+COPY app.ini hello.py ./
 
 # RUN mkdir $SOCKET_PATH && \
 #     chown www-data:www-data $SOCKET_PATH
 # VOLUME $SOCKET_PATH
 
-ENTRYPOINT ["uwsgi", "--ini", "webapp.ini"]
+ENTRYPOINT ["uwsgi", "--ini", "app.ini"]
