@@ -27,14 +27,14 @@ CREATE TABLE tblJob (
 
 CREATE TABLE tblTimesheet (
     job_id          INT          NOT NULL,
-    timesheet_id    INT          NOT NULL  AUTO_INCREMENT=-2147483648,
+    timesheet_id    INT          NOT NULL  AUTO_INCREMENT,
     timesheet_date  DATE         NOT NULL,
     craft_code      VARCHAR(10)  NOT NULL,
     weather         VARCHAR(50),
     temperature     VARCHAR(20),
     PRIMARY KEY (timesheet_id),
     UNIQUE KEY (job_id,timesheet_date,craft_code)
-);
+) AUTO_INCREMENT=-2147483648;
 
 CREATE TABLE tblPhase (
     timesheet_id  INT           NOT NULL,
