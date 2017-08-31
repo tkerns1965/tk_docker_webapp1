@@ -1,1 +1,1 @@
-docker run -d --name cnt_tkdw1_webapp img_tkdw1_webapp
+docker run -d --name cnt_tkdw1_app img_tkdw1_app
