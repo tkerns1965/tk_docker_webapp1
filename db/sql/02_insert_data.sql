@@ -1,3 +1,3 @@
-INSERT INTO `tblCompany`
+INSERT INTO `company`
 VALUES 
   (10);
