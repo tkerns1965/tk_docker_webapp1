@@ -1,23 +1,23 @@
-DROP DATABASE IF EXISTS tkdw1;
-CREATE DATABASE IF NOT EXISTS tkdw1;
-USE tkdw1;
+DROP DATABASE IF EXISTS tkdw1-db;
+CREATE DATABASE IF NOT EXISTS tkdw1-db;
+USE tkdw1-db;
 
 SELECT 'CREATING DATABASE STRUCTURE' as 'INFO';
 
-DROP TABLE IF EXISTS tblCompany,
-                     tblJob,
-                     tblTimesheet,
-                     tblPhase, 
-                     tblEmployee, 
-                     tblClass, 
-                     tblHours;
+DROP TABLE IF EXISTS company,
+                     job,
+                     timesheet,
+                     phase, 
+                     employee, 
+                     class, 
+                     hours;
 
-CREATE TABLE tblCompany (
+CREATE TABLE company (
     company_no  TINYINT  NOT NULL,
     PRIMARY KEY (company_no)
 );
 
-CREATE TABLE tblJob (
+CREATE TABLE job (
     company_no  TINYINT       NOT NULL,
     job_id      INT UNSIGNED  NOT NULL  AUTO_INCREMENT,
     job_code    VARCHAR(10)   NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE tblJob (
     UNIQUE KEY (company_no,job_code)
 );
 
-CREATE TABLE tblTimesheet (
+CREATE TABLE timesheet (
     job_id          INT           NOT NULL,
     timesheet_id    INT UNSIGNED  NOT NULL  AUTO_INCREMENT,
     timesheet_date  DATE          NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE tblTimesheet (
     UNIQUE KEY (job_id,timesheet_date,craft_code)
 );
 
-CREATE TABLE tblPhase (
+CREATE TABLE phase (
     timesheet_id  INT           NOT NULL,
     phase_id      INT UNSIGNED  NOT NULL  AUTO_INCREMENT,
     phase_code    VARCHAR(20)   NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE tblPhase (
     UNIQUE KEY (timesheet_id,phase_code,phase_note)
 );
 
-CREATE TABLE tblEmployee (
+CREATE TABLE employee (
     timesheet_id   INT           NOT NULL,
     employee_id    INT UNSIGNED  NOT NULL  AUTO_INCREMENT,
     employee_code  VARCHAR(11)   NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE tblEmployee (
     UNIQUE KEY (timesheet_id,employee_code,employee_note)
 );
 
-CREATE TABLE tblClass (
+CREATE TABLE class (
     employee_id     INT           NOT NULL,
     class_id        INT UNSIGNED  NOT NULL  AUTO_INCREMENT,
     class_code      VARCHAR(10)   NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE tblClass (
     UNIQUE KEY (employee_id,class_code,class_note,equipment_code,equipment_note)
 );
 
-CREATE TABLE tblHours (
+CREATE TABLE hours (
     phase_id         INT           NOT NULL,
     class_id         INT           NOT NULL,
     labor_hours      DECIMAL(4,2)  NOT NULL,
