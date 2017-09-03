@@ -1,6 +1,6 @@
 from peewee import *
 
-database = MySQLDatabase('tkdw1', **{'host': '172.18.0.2', 'port': 3306, 'user': 'tony', 'password': '2hard4u'})
+database = MySQLDatabase('tkdw1-db', **{'host': '172.18.0.2', 'port': 3306, 'user': 'tony', 'password': '2hard4u'})
 
 class UnknownField(object):
     def __init__(self, *_, **__): pass
@@ -9,7 +9,7 @@ class BaseModel(Model):
     class Meta:
         database = database
 
-class Tblclass(BaseModel):
+class Class(BaseModel):
     class_code = CharField()
     class_ = PrimaryKeyField(db_column='class_id')
     class_note = CharField(null=True)
@@ -18,66 +18,66 @@ class Tblclass(BaseModel):
     equipment_note = CharField(null=True)
 
     class Meta:
-        db_table = 'tblClass'
+        db_table = 'class'
         indexes = (
             (('employee', 'class_code', 'class_note', 'equipment_code', 'equipment_note'), True),
         )
 
-class Tblcompany(BaseModel):
+class Company(BaseModel):
     company_no = PrimaryKeyField()
 
     class Meta:
-        db_table = 'tblCompany'
+        db_table = 'company'
 
-class Tblemployee(BaseModel):
+class Employee(BaseModel):
     employee_code = CharField()
     employee = PrimaryKeyField(db_column='employee_id')
     employee_note = CharField(null=True)
     timesheet = IntegerField(db_column='timesheet_id')
 
     class Meta:
-        db_table = 'tblEmployee'
+        db_table = 'employee'
         indexes = (
             (('timesheet', 'employee_code', 'employee_note'), True),
         )
 
-class Tblhours(BaseModel):
+class Hours(BaseModel):
     class_ = IntegerField(db_column='class_id')
     equipment_hours = DecimalField(null=True)
     labor_hours = DecimalField()
     phase = IntegerField(db_column='phase_id')
 
     class Meta:
-        db_table = 'tblHours'
+        db_table = 'hours'
         indexes = (
             (('phase', 'class_'), True),
         )
         primary_key = CompositeKey('class_', 'phase')
 
-class Tbljob(BaseModel):
+class Job(BaseModel):
     company_no = IntegerField()
     job_code = CharField()
     job = PrimaryKeyField(db_column='job_id')
 
     class Meta:
-        db_table = 'tblJob'
+        db_table = 'job'
         indexes = (
             (('company_no', 'job_code'), True),
         )
 
-class Tblphase(BaseModel):
+class Phase(BaseModel):
     phase_code = CharField()
     phase = PrimaryKeyField(db_column='phase_id')
     phase_note = CharField(null=True)
     timesheet = IntegerField(db_column='timesheet_id')
 
     class Meta:
-        db_table = 'tblPhase'
+        db_table = 'phase'
         indexes = (
             (('timesheet', 'phase_code', 'phase_note'), True),
         )
 
-class Tbltimesheet(BaseModel):
+class Timesheet(BaseModel):
     craft_code = CharField()
     job = IntegerField(db_column='job_id')
     temperature = CharField(null=True)
@@ -86,7 +86,7 @@ class Tbltimesheet(BaseModel):
     weather = CharField(null=True)
 
     class Meta:
-        db_table = 'tblTimesheet'
+        db_table = 'timesheet'
         indexes = (
             (('job', 'timesheet_date', 'craft_code'), True),
         )
