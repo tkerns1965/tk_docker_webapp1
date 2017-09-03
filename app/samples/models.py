@@ -11,16 +11,16 @@ class BaseModel(Model):
 
 class Class(BaseModel):
     class_code = CharField()
-    class_ = PrimaryKeyField(db_column='class_id')
+    class_id = PrimaryKeyField()
     class_note = CharField(null=True)
-    employee = IntegerField(db_column='employee_id')
+    employee_id = IntegerField()
     equipment_code = CharField(null=True)
     equipment_note = CharField(null=True)
 
     class Meta:
-        db_table = 'class'
+        db_table = 'class_id'
         indexes = (
-            (('employee', 'class_code', 'class_note', 'equipment_code', 'equipment_note'), True),
+            (('employee_id', 'class_code', 'class_note', 'equipment_code', 'equipment_note'), True),
         )
 
 class Company(BaseModel):
@@ -31,33 +31,33 @@ class Company(BaseModel):
 
 class Employee(BaseModel):
     employee_code = CharField()
-    employee = PrimaryKeyField(db_column='employee_id')
+    employee_id = PrimaryKeyField()
     employee_note = CharField(null=True)
-    timesheet = IntegerField(db_column='timesheet_id')
+    timesheet_id = IntegerField()
 
     class Meta:
-        db_table = 'employee'
+        db_table = 'employee_id'
         indexes = (
-            (('timesheet', 'employee_code', 'employee_note'), True),
+            (('timesheet_id', 'employee_code', 'employee_note'), True),
         )
 
 class Hours(BaseModel):
-    class_ = IntegerField(db_column='class_id')
+    class_id = IntegerField()
     equipment_hours = DecimalField(null=True)
     labor_hours = DecimalField()
-    phase = IntegerField(db_column='phase_id')
+    phase_id = IntegerField()
 
     class Meta:
         db_table = 'hours'
         indexes = (
-            (('phase', 'class_'), True),
+            (('phase_id', 'class_id'), True),
         )
-        primary_key = CompositeKey('class_', 'phase')
+        primary_key = CompositeKey('class_id', 'phase_id')
 
 class Job(BaseModel):
     company_no = IntegerField()
     job_code = CharField()
-    job = PrimaryKeyField(db_column='job_id')
+    job_id = PrimaryKeyField()
 
     class Meta:
         db_table = 'job'
@@ -67,27 +67,27 @@ class Job(BaseModel):
 
 class Phase(BaseModel):
     phase_code = CharField()
-    phase = PrimaryKeyField(db_column='phase_id')
+    phase_id = PrimaryKeyField()
     phase_note = CharField(null=True)
-    timesheet = IntegerField(db_column='timesheet_id')
+    timesheet_id = IntegerField()
 
     class Meta:
         db_table = 'phase'
         indexes = (
-            (('timesheet', 'phase_code', 'phase_note'), True),
+            (('timesheet_id', 'phase_code', 'phase_note'), True),
         )
 
 class Timesheet(BaseModel):
     craft_code = CharField()
-    job = IntegerField(db_column='job_id')
+    job_id = IntegerField()
     temperature = CharField(null=True)
     timesheet_date = DateField()
-    timesheet = PrimaryKeyField(db_column='timesheet_id')
+    timesheet_id = PrimaryKeyField()
     weather = CharField(null=True)
 
     class Meta:
         db_table = 'timesheet'
         indexes = (
-            (('job', 'timesheet_date', 'craft_code'), True),
+            (('job_id', 'timesheet_date', 'craft_code'), True),
         )
 
