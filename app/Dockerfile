@@ -13,10 +13,10 @@ WORKDIR $INSTALL_PATH
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY app.ini hello.py ./
+COPY hello.py uwsgi.ini ./
 
 # RUN mkdir $SOCKET_PATH && \
 #     chown www-data:www-data $SOCKET_PATH
 # VOLUME $SOCKET_PATH
 
-ENTRYPOINT ["uwsgi", "--ini", "app.ini"]
+ENTRYPOINT ["uwsgi", "--ini", "uwsgi.ini"]
